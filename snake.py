@@ -19,7 +19,7 @@ while end_game == False:
     while len(map_objects) != NUM_OF_OBJECTS:
         new_object = [randint(0, MAP_WIDTH - 1), randint(0, MAP_HEIGHT - 1)]
 
-        if new_object not in map_objects and new_object != my_positon:
+        if new_object not in map_objects and new_object != my_positon and new_object not in tail:
             map_objects.append(new_object)
     print("+" + "-" * MAP_WIDTH * 3 + "+")
 
@@ -36,7 +36,7 @@ while end_game == False:
                     tail_in_cell = tail_piece
 
             for objects in map_objects:
-                if objects[POS_X] == cordinate_x and objects[POS_Y] == cordinate_y and objects != my_position:
+                if objects[POS_X] == cordinate_x and objects[POS_Y] == cordinate_y:
                     char_to_set = "*"
                     object_in_cell = objects
 
