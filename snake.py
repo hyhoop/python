@@ -36,7 +36,7 @@ while end_game == False:
                     tail_in_cell = tail_piece
 
             for objects in map_objects:
-                if objects[POS_X] == cordinate_x and objects[POS_Y] == cordinate_y and != my_position:
+                if objects[POS_X] == cordinate_x and objects[POS_Y] == cordinate_y and objects != my_position:
                     char_to_set = "*"
                     object_in_cell = objects
 
