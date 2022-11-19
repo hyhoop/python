@@ -12,22 +12,23 @@ charizar_died = False
 
 
 def charizar():
+    charizar_game = False
 
     CHARIZAR_LIFE = 10
-    YOUR_LIFE = 30
+    YOUR_LIFE = 10
 
     charizar_life = 10
-    your_life = 30
+    your_life = 10
 
     print("\n¡TE TOCA LUCHAR CONTRA...CHARIZARRRR!\n")
     sleep(1.1)
     while not charizar_died:
 
-        bar_life_charizar = int((charizar_life / CHARIZAR_LIFE) * 10)
-        bar_life_you = int((your_life / YOUR_LIFE) * 10)
+        bar_life_charizar = int(charizar_life * 10 / CHARIZAR_LIFE)
+        bar_life_you = int(your_life * 10 / YOUR_LIFE)
 
-        print("CHARIZAR: {}".format("#"*bar_life_charizar))
-        print("YOU: {}".format("#" * bar_life_you))
+        print("CHARIZAR: {}{}".format( "#" * bar_life_charizar, " " * (10 - bar_life_charizar)))
+        print("YOU:      {}{}".format("#" * bar_life_you, " " * (10 - bar_life_you)))
 
         print("\nTURNO DE CHARIZAR")
         sleep(1)
@@ -41,6 +42,16 @@ def charizar():
 
         input("Enter para continuar...")
         os.system("cls")
+
+
+
+        if your_life <= 0:
+            charizar_game = True
+            break
+
+    return charizar_game
+
+
 
 
 
@@ -97,7 +108,7 @@ while not end_game:
 
                 if charizar_in_cell:
                     os.system("cls")
-                    charizar()
+                    end_game = charizar()
 
             print("{}".format(char_to_draw), end="")
 
@@ -126,3 +137,5 @@ while not end_game:
     os.system("cls")
 
     print("Pokemons defeated {}".format(pokemons))
+
+os.system("cls")
