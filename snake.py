@@ -1,4 +1,4 @@
-import readchar
+import readchar as readchar
 from random import randint
 import os
 
@@ -14,6 +14,27 @@ end_game = False
 map_objects = []
 tail = []
 score = 0
+
+map_draw = """\
+####################
+                 ###
+                 ###
+##############   ###
+##############   ###
+#######   ####   ###
+#######
+##########   #######
+##########   #######
+###   #####   ######
+###    #####   #####
+####           #####
+########   #########
+########     #######
+##########   #######"""
+
+
+draw_to_list = [list(row) for row in map_draw.split("\n")]
+
 
 while end_game == False:
     while len(map_objects) != NUM_OF_OBJECTS:
@@ -48,6 +69,9 @@ while end_game == False:
                     score += 1
                 if tail_in_cell:
                     end_game = True
+
+            if draw_to_list[cordinate_y][cordinate_x] == "#":
+                char_to_set = "#"
 
             print(" {} ".format(char_to_set), end="")
 
