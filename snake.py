@@ -1,10 +1,16 @@
 import readchar as readchar
 from random import randint
 import os
+from colorama import Fore,init
+init()
+
+sel = input("¿De que color quieres la serpiente?: 1.Azul 2.Verde 3.Blanca  ")
 
 POS_X = 0
 POS_Y = 1
 NUM_OF_OBJECTS = 20
+
+
 TAIL_LENGTH = 0
 
 my_position = [2,1]
@@ -72,7 +78,12 @@ while not end_game:
 
             for tail_piece in tail:
                 if tail_piece[POS_X] == cordinate_x and tail_piece[POS_Y] == cordinate_y:
-                    char_to_set = " @"
+                    if sel == "2":
+                        char_to_set = Fore.GREEN + " @" + Fore.RESET
+                    elif sel == "1":
+                        char_to_set = Fore.LIGHTBLUE_EX + " @" + Fore.RESET
+                    elif sel == "3":
+                        char_to_set = " @"
                     tail_in_cell = tail_piece
 
             for objects in map_objects:
@@ -81,7 +92,15 @@ while not end_game:
                     object_in_cell = objects
 
             if my_position[POS_X] == cordinate_x and my_position[POS_Y] == cordinate_y:
-                char_to_set = " @"
+
+                if sel == "2":
+                    char_to_set = Fore.GREEN + " @" + Fore.RESET
+                elif sel == "1":
+                    char_to_set = Fore.LIGHTBLUE_EX + " @" + Fore.RESET
+                elif sel == "3":
+                    char_to_set = " @"
+
+
                 if object_in_cell:
                     map_objects.remove(object_in_cell)
                     TAIL_LENGTH += 1
