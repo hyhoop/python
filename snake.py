@@ -4,6 +4,8 @@ import os
 from colorama import Fore,init
 init()
 
+
+
 sel = input("¿De que color quieres la serpiente?: 1.Azul 2.Verde 3.Blanca  ")
 
 POS_X = 0

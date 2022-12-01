@@ -6,11 +6,6 @@ from time import sleep
 init()
 charizar_died = False
 
-
-
-
-
-
 def charizar():
     charizar_game = False
 
@@ -30,6 +25,8 @@ def charizar():
         print("CHARIZAR: {}{}".format( "#" * bar_life_charizar, " " * (10 - bar_life_charizar)))
         print("YOU:      {}{}".format("#" * bar_life_you, " " * (10 - bar_life_you)))
 
+        # Turno de charizar
+
         print("\nTURNO DE CHARIZAR")
         sleep(1)
         ataque_charizar = randint(1,2)
@@ -43,11 +40,27 @@ def charizar():
         input("Enter para continuar...")
         os.system("cls")
 
+        # Turno de tu
 
+        ataque_tuyo = input("¿Que ataques quieres hacer?: 1.Ataque rayo 2.Ataque semental  ")
+
+        if ataque_tuyo == "1":
+            print("Pikachu ataca con ataque rayo, le quita 7 de vida")
+            charizar_life -= 1
+        elif ataque_tuyo == "2":
+            print("Pikachu ataca con ataque sensual, le quita toda la vida y le hace un hijo")
+            charizar_life -= 10
 
         if your_life <= 0:
+            os.system("cls")
             charizar_game = True
             break
+
+        if charizar_life <= 0:
+            os.system("cls")
+            charizar_game = False
+            break
+
 
     return charizar_game
 
@@ -94,6 +107,9 @@ while not end_game:
         print("|", end="")
 
         for cordinate_x in range(MAP_WIDTH):
+            def borrar():
+                os.system("cls")
+
             char_to_draw = "  "
             charizar_in_cell = None
 
@@ -107,8 +123,10 @@ while not end_game:
                 char_to_draw = Fore.LIGHTCYAN_EX + ' @' + Fore.RESET
 
                 if charizar_in_cell:
-                    os.system("cls")
+                    borrar()
                     end_game = charizar()
+                    pokemons += 1
+                    coach1 = [40,30]
 
             print("{}".format(char_to_draw), end="")
 
